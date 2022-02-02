@@ -1,24 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import { getAllCharacters } from './services/dataAPI';
+import React, { useState, useEffect } from 'react';
+
+// useState --> Se utiliza para que guarde y renderice data (información)
 
 function App() {
+  const [character, setCharacter] = useState([])
+  useEffect(()=> {
+    getAllCharacters()
+    .then(data => setCharacter(data))
+
+  }, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {
+        character.map((item)=>  
+          <div key={ item.id }>
+            <img src={ item.image }/>
+            <p>{ item.name }</p>
+          </div>          
+        )
+      }
+    </>
   );
 }
 
