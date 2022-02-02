@@ -9,7 +9,6 @@ import React, { useState, useEffect } from 'react';
 function Saludar(props) {
   return <div>
     <h1>Consumo de API Rest</h1>
-    <br />
     <h2>by Diego Rosero</h2>
   </div>
 }
